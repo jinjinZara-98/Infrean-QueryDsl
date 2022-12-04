@@ -1,0 +1,43 @@
+spring:
+    profiles:
+#        프로파일을 나눠서 테스트에 영향이 없도록, 테스트에서 실행할때랑, 로컬에서 스프링부트로 톰캣을 띄울때랑 다른 상황으로
+#        톰캣으로 돌리면 샘플 데이터 넣는 로직이 동작, 테스트 케이스 돌릴때는 동작하기 않게
+#        로컬에서 돌린다는 의미
+        active: local
+
+    datasource:
+#        권한 주기: chmod 755 h2.sh
+#        처음 들어갈때는 jdbc:h2:~/querydsl
+#        ~/querydsl.mv.db 파일 생성 확인
+
+#        url: jdbc:h2:tcp://localhost/~/querydsl
+#        username: sa
+#        password:
+#        driver-class-name: org.h2.Driver
+
+#        url: jdbc:mysql://localhost:3306/querydsl?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+#        username: root
+#        password: root
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+        hibernate:
+#            애플리케이션 실행 시점에 테이블을 drop 하고, 다시 생성한다.
+#            create-drop은 끝날때도 테이블을 다 날려버려서 끝나고 볼 수 있는게 없음
+            ddl-auto: create
+
+        properties:
+            hibernate:
+#                show_sql java  sout로 출력
+#                밑에 로그로 출력하기로 설정했기 때문에 주석처리
+#                show_sql: true
+#                format_sql 쿼리를 이쁘게 볼 수 있음,
+                format_sql: true
+#               querydsl은 jpql의 빌더역할, 결국엔 jpql이 됨, JPQL을 볼 수 있다.
+                use_sql_comments: true
+
+logging.level:
+    #하이버네이트가 실행하는 쿼리들 로그로 출력, DEBUG 로 시작
+    org.hibernate.SQL: debug
+#    쿼리문 ?에 무슨 값이 들어가는지 보여주는
+    org.hibernate.type: trace
