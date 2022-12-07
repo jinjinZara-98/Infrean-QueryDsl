@@ -26,11 +26,13 @@ spring:
 
         properties:
             hibernate:
-#                show_sql java  sout로 출력
+#                 show_sql java sout로 출력
 #                밑에 로그로 출력하기로 설정했기 때문에 주석처리
 #                show_sql: true
+
 #                format_sql 쿼리를 이쁘게 볼 수 있음,
                 format_sql: true
+
 #               querydsl은 jpql의 빌더역할, 결국엔 jpql이 됨, JPQL을 볼 수 있다.
                 use_sql_comments: true
 
